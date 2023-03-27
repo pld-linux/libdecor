@@ -1,9 +1,11 @@
 Summary:	A client-side decorations library for Wayland client
+Summary(pl.UTF-8):	Biblioteka dekoracji po stronie klienta dla klientów Wayland
 Name:		libdecor
 Version:	0.1.1
 Release:	1
 License:	MIT
 Group:		Libraries
+#Source0Download: https://gitlab.freedesktop.org/libdecor/libdecor/-/releases
 Source0:	https://gitlab.freedesktop.org/libdecor/libdecor/uploads/ee5ef0f2c3a4743e8501a855d61cb397/%{name}-%{version}.tar.xz
 # Source0-md5:	7201e594958075d125e6f372d1cf56d7
 URL:		https://gitlab.freedesktop.org/libdecor/libdecor
@@ -27,8 +29,14 @@ libdecor is a library that can help Wayland clients draw window
 decorations for them. It aims to provide multiple backends that
 implements the decoration drawing.
 
+%description -l pl.UTF-8
+libdecor to biblioteka pomagająca klientom Wayland rysować dekoracje
+okien. Celem jest dostarczenie wielu backendów implementujących
+rysowanie dekoracji.
+
 %package devel
 Summary:	Development files for libdecor
+Summary(pl.UTF-8):	Pliki programistyczne libdecor
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -36,12 +44,20 @@ Requires:	%{name} = %{version}-%{release}
 This package contains the header files for developing applications
 that use libdecor.
 
+%description devel -l pl.UTF-8
+Ten pakiet zawiera pliki nagłówkowe do tworzenia aplikacji
+wykorzystujących libdecor.
+
 %package plugin-cairo
 Summary:	Cairo plugin for libdecor
+Summary(pl.UTF-8):	Wtyczka Cairo do libdecor
 Requires:	%{name} = %{version}-%{release}
 
 %description plugin-cairo
 Cairo plugin for libdecor.
+
+%description plugin-cairo -l pl.UTF-8
+Wtyczka Cairo do libdecor.
 
 %prep
 %setup -q

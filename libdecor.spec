@@ -1,24 +1,25 @@
 Summary:	A client-side decorations library for Wayland client
 Summary(pl.UTF-8):	Biblioteka dekoracji po stronie klienta dla klientów Wayland
 Name:		libdecor
-Version:	0.1.1
+Version:	0.2.2
 Release:	1
 License:	MIT
 Group:		Libraries
 #Source0Download: https://gitlab.freedesktop.org/libdecor/libdecor/-/releases
-Source0:	https://gitlab.freedesktop.org/libdecor/libdecor/uploads/ee5ef0f2c3a4743e8501a855d61cb397/%{name}-%{version}.tar.xz
-# Source0-md5:	7201e594958075d125e6f372d1cf56d7
+Source0:	https://gitlab.freedesktop.org/libdecor/libdecor/-/releases/%{version}/downloads/%{name}-%{version}.tar.xz
+# Source0-md5:	5b7f4a10a9335b62101bccc220e2d13a
 URL:		https://gitlab.freedesktop.org/libdecor/libdecor
 BuildRequires:	cairo-devel
 BuildRequires:	dbus-devel >= 1.0
-BuildRequires:	meson >= 0.47.0
+BuildRequires:	gtk+3-devel
+BuildRequires:	meson >= 0.49.0
 BuildRequires:	ninja
 BuildRequires:	pango-devel
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	wayland-devel >= 1.18
-BuildRequires:	wayland-protocols >= 1.15
+BuildRequires:	wayland-protocols >= 1.32
 BuildRequires:	xz
 Requires:	wayland >= 1.18
 Suggests:	%{name}-plugin-cairo = %{version}-%{release}
@@ -59,6 +60,17 @@ Cairo plugin for libdecor.
 %description plugin-cairo -l pl.UTF-8
 Wtyczka Cairo do libdecor.
 
+%package plugin-gtk
+Summary:	GTK plugin for libdecor
+Summary(pl.UTF-8):	Wtyczka GTK do libdecor
+Requires:	%{name} = %{version}-%{release}
+
+%description plugin-gtk
+GTK plugin for libdecor.
+
+%description plugin-gtk -l pl.UTF-8
+Wtyczka GTK do libdecor.
+
 %prep
 %setup -q
 
@@ -97,3 +109,7 @@ rm -rf $RPM_BUILD_ROOT
 %files plugin-cairo
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libdecor/plugins-1/libdecor-cairo.so
+
+%files plugin-gtk
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libdecor/plugins-1/libdecor-gtk.so

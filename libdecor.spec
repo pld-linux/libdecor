@@ -15,7 +15,7 @@ BuildRequires:	meson >= 0.47.0
 BuildRequires:	ninja
 BuildRequires:	pango-devel
 BuildRequires:	pkgconfig
-BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	wayland-devel >= 1.18
 BuildRequires:	wayland-protocols >= 1.15
@@ -63,15 +63,15 @@ Wtyczka Cairo do libdecor.
 %setup -q
 
 %build
-%meson build \
+%meson \
 	-Ddemo=false
 
-%ninja_build -C build
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%ninja_install -C build
+%meson_install
 
 %clean
 rm -rf $RPM_BUILD_ROOT
